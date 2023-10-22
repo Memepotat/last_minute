@@ -1,6 +1,6 @@
 public class last_minute{
-    public static main(String[] args){
-        
+    public static void main(String[] args){
+
     }
     
 }
