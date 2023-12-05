@@ -106,7 +106,9 @@ public class EditRecipe {
                             // * */ Handle IOException if any
                             e.printStackTrace();
                         }
-                        lineCounter++;
+                        if (!line.trim().isEmpty()) {
+                            lineCounter++;
+                        }
 
                     } else if (lineCounter == 2) { // ! Create Difficulty file
                         outputFilePath = outputFilePath + "/Difficulty.txt";
