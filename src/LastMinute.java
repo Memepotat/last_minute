@@ -1,14 +1,16 @@
+import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
 
 public class LastMinute {
-    public static void main(String[] args) throws URISyntaxException {
-
-        // * Test to see that the prompt is created correctly */
-        Ingredients ing = new Ingredients();
-        String Prompt = ing.PormptCreator(ing.IngredientList());
+    public static void main(String[] args) throws URISyntaxException, IOException {
 
         // * Call the api */
-        GPT_API.getRecipes(Prompt);
+        // GPT_API.getRecipes(Prompt);
         EditRecipe.subFile();
         EditRecipe.splitRecipes();
 

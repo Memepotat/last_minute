@@ -128,9 +128,10 @@ public class EditRecipe {
                         }
                         lineCounter++;
 
-                    } else if (lineCounter > 3 && !line.equals("Instructions:") && instructions == false) { // ! Create
-                                                                                                            // Ingredients
-                                                                                                            // file
+                    } else if (lineCounter > 3 && !line.trim().equals("Instructions:") && instructions == false) { // !
+                                                                                                                   // Create
+                        // Ingredients
+                        // file
                         outputFilePath = outputFilePath + "/Ingredients.txt";
                         try (FileWriter writer = new FileWriter(outputFilePath, true)) {
                             writer.write(line + "\n");
@@ -140,14 +141,14 @@ public class EditRecipe {
                         }
                         lineCounter++;
 
-                    } else if (instructions == true || line.trim().equals("Instructions:")) { // ! Create Instructions
-                                                                                              // file
+                    } else if (instructions == true || line.trim().equals("Instructions:")
+                            || line.equals("Instructions: ")) { // ! Create Instructions
+                        // file
                         outputFilePath = outputFilePath + "/Instructions.txt";
                         try (FileWriter writer = new FileWriter(outputFilePath, true)) {
                             writer.write(line + "\n");
-                            if (line.equals("Instructions:")) {
-                                instructions = true;
-                            }
+                            instructions = true;
+
                         } catch (IOException e) {
                             // * */ Handle IOException if any
                             e.printStackTrace();

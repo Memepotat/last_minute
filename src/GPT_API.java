@@ -81,13 +81,11 @@ public class GPT_API {
             File file = new File(path);
             if (!file.exists()) {
                 file.createNewFile();
-                System.out.println("Created file");
             }
 
             try (BufferedWriter bw = new BufferedWriter(new FileWriter(path))) {
                 // *Split the string in lines
                 String[] lines = recipes.split(Pattern.quote("\n"));
-                System.out.println("Split text into lines: " + lines.length);
                 for (String line : lines) {
                     bw.write(line);
                     bw.newLine(); // * Add a new line
