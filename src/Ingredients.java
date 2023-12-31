@@ -17,10 +17,10 @@ public class Ingredients {
     }
 
     public String PormptCreator(String Ingredients) {
-
+        System.out.println("These are the ing: " + Ingredients + " End of ingredients");
         String prompt = "Provide me with up to five (5) recipes using either all or some of the following ingredients:"
                 + Ingredients
-                + ". Structure the result as so: Signal the beginning of a recipe by placing ‘===’ at the first line" +
+                + ". Structure the result as so: Signal the beginning of a recipe by placing === at the first line" +
                 "at the start. Under the first line is the title of the recipe followed by a difficulty level one line below"
                 + "(easy, medium, hard). The third line should be a time estimate for the recipe in minutes. Under that line give me "
                 +
