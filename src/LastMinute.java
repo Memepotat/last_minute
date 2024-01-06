@@ -38,7 +38,7 @@ public class LastMinute {
         // * Test to see that the prompt is created correctly */
         Ingredients ing = new Ingredients();
         String Prompt = ing.PormptCreator(ing.IngredientList());
-        
+
         // * Call the api */
         GPT_API.getRecipes(Prompt);
         EditRecipe.subFile();

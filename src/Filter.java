@@ -12,22 +12,21 @@ import java.nio.file.StandardCopyOption;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.nio.*;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.ArrayList;
 
 public class Filter {
 
     public static String path = System.getProperty("user.dir");
 
-    public boolean[] Difficulty(int level) { // ! Difficulty Filter
+    public ArrayList<Integer> Difficulty(int level) { // ! Difficulty Filter
         // * Set the path to the recipes folder */
         path = path + "/recipes";
 
         // * Count the number of recipes in the folder */
         int FileCount = FileCount(path);
 
-        int[] recipeDif = new int[FileCount];
-        boolean[] RD = new boolean[FileCount];
+        ArrayList<Integer> recipeDif = new ArrayList<Integer>();
 
         for (int i = 1; i <= FileCount; i++) {
             String Difpath = path + "/recipe_" + i + "/Difficulty.txt";
@@ -37,31 +36,32 @@ public class Filter {
             try {
                 if ((new Scanner(new File(Difpath)).useDelimiter("\\Z").next().contains("Easy"))
                         || (new Scanner(new File(Difpath)).useDelimiter("\\Z").next().contains("easy"))) {
-                    RD[i - 1] = true;
+                    recipeDif.add(i);
                 } else if ((new Scanner(new File(Difpath)).useDelimiter("\\Z").next().contains("Medium"))
                         || (new Scanner(new File(Difpath)).useDelimiter("\\Z").next().contains("medium"))) {
                     if (level >= 2) {
-                        RD[i - 1] = true;
+                        recipeDif.add(i);
                     }
                 } else if ((new Scanner(new File(Difpath)).useDelimiter("\\Z").next().contains("Hard"))
                         || (new Scanner(new File(Difpath)).useDelimiter("\\Z").next().contains("hard"))) {
                     if (level == 3) {
-                        RD[i - 1] = true;
+                        recipeDif.add(i);
+
                     }
                 }
             } catch (FileNotFoundException e) {
             }
         }
-        return RD;
+        return recipeDif;
 
     }
 
-    public boolean[] Time(int time) throws IOException { // ! Time filter
+    public ArrayList<Integer> Time(int time) throws IOException { // ! Time filter
         // * Extract the numbers from the time estimate files */
-        path = path + "/recipes";
+        System.out.println("Path: " + path);
         int fc = FileCount(path);
 
-        boolean[] RT = new boolean[fc];
+        ArrayList<Integer> recipeTime = new ArrayList<>();
 
         for (int i = 1; i <= fc; i++) {
             String Tpath = path + "/recipe_" + i + "/TimeEstimate.txt";
@@ -81,11 +81,11 @@ public class Filter {
                 }
             }
             if (time >= Integer.parseInt(result.toString().trim())) {
-                RT[i - 1] = true;
+                recipeTime.add(i);
             }
         }
 
-        return RT;
+        return recipeTime;
     }
 
     public void Save(String source) throws IOException { // ! Save method
@@ -98,12 +98,7 @@ public class Filter {
 
         int num = FileCount(parent); // * Count the number of saved recipes and add one */
         num += 1;
-        System.out.println("Num : " + num);
         String dest = parent + "/saved_" + num;
-
-        System.out.println("Path: " + path);
-        System.out.println("Parent: " + parent);
-        System.out.println("Destination: " + dest);
 
         Path sourceDir = Paths.get(source);
         Path destinationDir = Paths.get(dest);

@@ -21,7 +21,7 @@ public class EditRecipe {
 
             // * */ Read each line from the file until the end of the file is reached
             while ((line = reader.readLine()) != null) {
-                if (line.trim().equals("===") && fileCounter > 1) {
+                if ((line.trim().equals("===") || line.contains("===")) && fileCounter > 1) {
                     // * */ When "===" is encountered, create a new file with the current section
                     saveSectionToFile(fileCounter, currentSection.toString());
                     currentSection = new StringBuilder();

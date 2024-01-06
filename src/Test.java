@@ -1,26 +1,21 @@
+import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Test {
 
     public static void main(String[] args) {
         Filter filter = new Filter();
 
-        String path = System.getProperty("user.dir");
-        path = path + "/TEST";
-
         try {
-            boolean[] time = filter.Time(30);
-            System.out.println(time[0]);
-            System.out.println(time[1]);
-            System.out.println(time[2]);
-            System.out.println(time[3]);
-            System.out.println(time[4]);
-        } catch (IOException e) {
-        }
 
-        try {
-            filter.Save(
-                    "C:/Programming/Java/Projects/Uni/3rd/Projects/Last Minute/last_minute/recipes/recipe_1");
+            ArrayList<Integer> Dif = filter.Difficulty(1);
+            ArrayList<Integer> Time = filter.Time(15);
+
+            System.out.println("Amount of Recipes for Difficulty and Time: " + Dif.size() + ", " + Time.size());
+            System.out.println(Dif.toString());
+            System.out.println(Time.toString());
+
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
