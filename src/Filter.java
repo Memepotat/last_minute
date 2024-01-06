@@ -58,7 +58,6 @@ public class Filter {
 
     public ArrayList<Integer> Time(int time) throws IOException { // ! Time filter
         // * Extract the numbers from the time estimate files */
-        System.out.println("Path: " + path);
         int fc = FileCount(path);
 
         ArrayList<Integer> recipeTime = new ArrayList<>();
@@ -88,9 +87,10 @@ public class Filter {
         return recipeTime;
     }
 
-    public void Save(String source) throws IOException { // ! Save method
+    public void Save(int Rn) throws IOException { // ! Save method
         String path = System.getProperty("user.dir");
         String parent = path + "/Saved";
+        String source = path + "/Recipes/recipe_" + Rn;
 
         if (!Files.exists(Paths.get(parent))) {
             Files.createDirectories(Paths.get(parent)); // * Create the Saved directory if it doesn't exist */
