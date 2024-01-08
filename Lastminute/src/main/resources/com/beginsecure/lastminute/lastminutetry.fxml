@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import javafx.scene.text.TextFlow?>
+
+<Pane fx:id="mainscreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: a99abd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beginsecure.lastminute.HelloController">
+   <children>
+      <Button fx:id="Buttonforrecipes" layoutX="33.0" layoutY="345.0" mnemonicParsing="false" onAction="#onButtonClickRecipeCreation" style="-fx-background-color: #501b61;" text="Press for last minute recipe" textAlignment="CENTER" textFill="WHITE" />
+      <ChoiceBox fx:id="skillBox" layoutX="33.0" layoutY="200.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="timeBox" layoutX="33.0" layoutY="282.0" prefWidth="150.0" />
+      <ImageView fx:id="gifImageView" fitHeight="150.0" fitWidth="200.0" layoutX="1050.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@cooking-cake.gif" />
+         </image>
+      </ImageView>
+      <TextField fx:id="ingredientinput" layoutX="34.0" layoutY="127.0" prefHeight="25.0" prefWidth="526.0" />
+      <ImageView fitHeight="64.0" fitWidth="141.0" layoutX="376.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@logo.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="34.0" layoutY="111.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Enter the ingredients you have seperated by commas">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="34.0" layoutY="188.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose your skill level">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text layoutX="34.0" layoutY="268.0" strokeType="OUTSIDE" strokeWidth="0.0" text="How much time do you have?">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Label fx:id="wait" ellipsisString="" layoutX="33.0" layoutY="376.0" prefHeight="17.0" prefWidth="267.0" text="Please keep in mind avarege response time 30sec!" textAlignment="CENTER" textFill="#5e5959" />
+      <Text layoutX="33.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Minute Food Recipes">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Text>
+      <Button fx:id="SaveRecipe" disable="true" layoutX="595.0" layoutY="685.0" mnemonicParsing="false" onAction="#Onsaverecipetofile" style="-fx-background-color: #501b61;" text="Save Recipe" textFill="WHITE" />
+      <Button fx:id="Previous" disable="true" layoutX="696.0" layoutY="685.0" mnemonicParsing="false" onAction="#OnGoonerecipeback" style="-fx-background-color: #501b61;" text="Previous" textFill="WHITE" />
+      <Button fx:id="Next" disable="true" layoutX="774.0" layoutY="685.0" mnemonicParsing="false" onAction="#OnGoonerecipenext" style="-fx-background-color: #501b61;" text="forward" textFill="WHITE" />
+      <ScrollPane fx:id="ingredientScrollPane" layoutX="33.0" layoutY="401.0" prefHeight="385.0" prefWidth="526.0">
+         <content>
+            <TextFlow fx:id="recipeingredients" style="-fx-font-size: 14px;" />
+         </content>
+      </ScrollPane>
+
+      <ScrollPane fx:id="executionScrollPane" layoutX="595.0" layoutY="98.0" prefHeight="555.0" prefWidth="593.0">
+         <content>
+            <TextFlow fx:id="recipeexecution" style="-fx-font-size: 14px;" />
+         </content>
+      </ScrollPane>
+      <Button fx:id="Exittofirstscreen" disable="true" layoutX="595.0" layoutY="755.0" mnemonicParsing="false" onAction="#onButtonClickNewRecipeCreation" style="-fx-background-color: #501b61;" text="Search Again" textFill="WHITE" />
+      <Button fx:id="Exitapplication" layoutX="711.0" layoutY="755.0" mnemonicParsing="false" onAction="#OnCloseLastminute" style="-fx-background-color: #501b61;" text="Exit the app" textFill="WHITE" />
+      <Button fx:id="ShowSavedRecipes" layoutX="203.0" layoutY="345.0" mnemonicParsing="false" onAction="#OnShowSavedRecipes" style="-fx-background-color: #501b61;" text="View saved recipes" textAlignment="CENTER" textFill="WHITE" />
+   </children>
+</Pane>
