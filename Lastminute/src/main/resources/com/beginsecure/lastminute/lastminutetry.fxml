@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -14,15 +15,15 @@
 
 <Pane fx:id="mainscreen" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" style="-fx-background-color: a99abd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.beginsecure.lastminute.HelloController">
    <children>
-      <Button fx:id="Buttonforrecipes" layoutX="33.0" layoutY="345.0" mnemonicParsing="false" onAction="#onButtonClickRecipeCreation" style="-fx-background-color: #501b61;" text="Press for last minute recipe" textAlignment="CENTER" textFill="WHITE" />
-      <ChoiceBox fx:id="skillBox" layoutX="33.0" layoutY="200.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="timeBox" layoutX="33.0" layoutY="282.0" prefWidth="150.0" />
+      <Button fx:id="Buttonforrecipes" disable="true" layoutX="33.0" layoutY="345.0" mnemonicParsing="false" onAction="#onButtonClickRecipeCreation" style="-fx-background-color: #501b61;" text="Press for last minute recipe" textAlignment="CENTER" textFill="WHITE" />
+      <ChoiceBox fx:id="skillBox" disable="true" layoutX="33.0" layoutY="200.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="timeBox" disable="true" layoutX="33.0" layoutY="282.0" prefWidth="150.0" />
       <ImageView fx:id="gifImageView" fitHeight="150.0" fitWidth="200.0" layoutX="1050.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@cooking-cake.gif" />
          </image>
       </ImageView>
-      <TextField fx:id="ingredientinput" layoutX="34.0" layoutY="127.0" prefHeight="25.0" prefWidth="526.0" />
+      <TextField fx:id="ingredientinput" disable="true" layoutX="34.0" layoutY="127.0" prefHeight="25.0" prefWidth="526.0" />
       <ImageView fitHeight="64.0" fitWidth="141.0" layoutX="376.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logo.png" />
@@ -62,6 +63,12 @@
       </ScrollPane>
       <Button fx:id="Exittofirstscreen" disable="true" layoutX="595.0" layoutY="755.0" mnemonicParsing="false" onAction="#onButtonClickNewRecipeCreation" style="-fx-background-color: #501b61;" text="Search Again" textFill="WHITE" />
       <Button fx:id="Exitapplication" layoutX="711.0" layoutY="755.0" mnemonicParsing="false" onAction="#OnCloseLastminute" style="-fx-background-color: #501b61;" text="Exit the app" textFill="WHITE" />
-      <Button fx:id="ShowSavedRecipes" layoutX="203.0" layoutY="345.0" mnemonicParsing="false" onAction="#OnShowSavedRecipes" style="-fx-background-color: #501b61;" text="View saved recipes" textAlignment="CENTER" textFill="WHITE" />
+      <Button fx:id="ShowSavedRecipes" disable="true" layoutX="203.0" layoutY="345.0" mnemonicParsing="false" onAction="#OnShowSavedRecipes" style="-fx-background-color: #501b61;" text="View saved recipes" textAlignment="CENTER" textFill="WHITE" />
+      <TextField fx:id="Username" layoutX="599.0" layoutY="20.0" prefHeight="25.0" prefWidth="150.0" promptText="Username" />
+      <PasswordField fx:id="Password" layoutX="774.0" layoutY="20.0" prefHeight="25.0" prefWidth="150.0" promptText="Password" />
+      <Button fx:id="Loginbutton" layoutX="938.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnLogintoapp" style="-fx-background-color: #501b61;" text="Login" textFill="WHITE" />
+      <Button fx:id="RegisterButton" layoutX="990.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnRegistertoapp" style="-fx-background-color: #501b61;" text="Register" textFill="WHITE" />
+      <Button fx:id="GuestButton" layoutX="1058.0" layoutY="20.0" mnemonicParsing="false" onAction="#OnContinueasGuest" style="-fx-background-color: #501b61;" text="Continue as Guest" textFill="WHITE" />
+      <Label fx:id="wait1" ellipsisString="" layoutX="600.0" layoutY="51.0" prefHeight="17.0" prefWidth="351.0" text="Don't enter frequently used passwords. The Database isn't secure!" textAlignment="CENTER" textFill="#5e5959" />
    </children>
 </Pane>

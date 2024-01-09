@@ -28,7 +28,7 @@ public class HelloController {
     private ScrollPane ingredientScrollPane,executionScrollPane;
 
     @FXML
-    private TextField ingredientinput;
+    private TextField ingredientinput,Username;
 
     @FXML
     private ChoiceBox<String> skillBox;
@@ -40,10 +40,13 @@ public class HelloController {
     private ImageView gifImageView;
 
     @FXML
-    private Button Buttonforrecipes,Exitapplication,Next,Previous,SaveRecipe,ShowSavedRecipes,Exittofirstscreen;
+    private Button Buttonforrecipes,Exitapplication,Next,Previous,SaveRecipe,ShowSavedRecipes,Exittofirstscreen,Loginbutton,RegisterButton,GuestButton;
 
     @FXML
     private Label wait;
+
+    @FXML
+    private PasswordField Password;
 
     @FXML
     private TextFlow recipeingredients,recipeexecution;
@@ -60,6 +63,81 @@ public class HelloController {
         Image newImage = new Image(getClass().getResourceAsStream("/com/beginsecure/lastminute/penguin-frame.png"));
         gifImageView.setImage(newImage);
     }
+    void Initiateappuse(){
+        ingredientinput.clear(); // Clear the text field
+        ingredientinput.setDisable(false); // Enable the ingredient input field
+        Buttonforrecipes.setDisable(false); // Enable the button
+        ShowSavedRecipes.setDisable(false);
+        skillBox.setDisable(false);
+        timeBox.setDisable(false);
+        Loginbutton.setDisable(true);
+        RegisterButton.setDisable(true);
+        GuestButton.setDisable(true);
+        Username.setDisable(true);
+        Password.setDisable(true);
+        recipeexecution.getChildren().clear();
+    }
+
+
+    @FXML
+    void OnLogintoapp(ActionEvent event) throws Exception {
+        recipeexecution.getChildren().clear();
+        if(!Username.getText().isEmpty() && !Password.getText().isEmpty()){
+            LMUserDAO log = new LMUserDAO();
+            try {
+                if (log.authenticate(Username.getText(), Password.getText())) {
+                    Initiateappuse();
+                }
+            }catch (Exception e){
+
+                recipeexecution.getChildren().clear();
+                Text executionText5 = new Text("Username or password are WRONG please enter again!");
+                recipeexecution.getChildren().add(executionText5);
+
+                // Set content for the ScrollPane
+                executionScrollPane.setContent(recipeexecution);
+
+            }
+        }else{
+            recipeexecution.getChildren().clear();
+            Text executionText6 = new Text("Username or password are Empty please enter again!");
+            recipeexecution.getChildren().add(executionText6);
+
+            // Set content for the ScrollPane
+            executionScrollPane.setContent(recipeexecution);
+        }
+
+
+    }
+
+    @FXML
+    void OnRegistertoapp(ActionEvent event) throws Exception {
+        if(!Username.getText().isEmpty() && !Password.getText().isEmpty()) {
+            LMUserDAO log1 = new LMUserDAO();
+            log1.register(Username.getText(),Password.getText());
+            recipeexecution.getChildren().clear();
+            Username.clear();
+            Password.clear();
+            Text executionText3 = new Text("Welcome to our community, Please re-enter your credentials and login.");
+            recipeexecution.getChildren().add(executionText3);
+
+            // Set content for the ScrollPane
+            executionScrollPane.setContent(recipeexecution);
+        }else{
+            recipeexecution.getChildren().clear();
+            Text executionText4 = new Text("Username or password are Empty please enter again!");
+            recipeexecution.getChildren().add(executionText4);
+
+            // Set content for the ScrollPane
+            executionScrollPane.setContent(recipeexecution);
+        }
+    }
+    @FXML
+    void OnContinueasGuest(ActionEvent event) {
+        Initiateappuse();
+    }
+
+
 
     @FXML
     public void initialize() {
@@ -190,6 +268,8 @@ public class HelloController {
         Buttonforrecipes.setDisable(true);
         ShowSavedRecipes.setDisable(true);
         Next.setDisable(false);
+        skillBox.setDisable(true);
+        timeBox.setDisable(true);
 
         New=false;
         Filter fil2 = new Filter();
@@ -237,6 +317,8 @@ public class HelloController {
         ingredientinput.setDisable(false); // Enable the ingredient input field
         Buttonforrecipes.setDisable(false); // Enable the button
         ShowSavedRecipes.setDisable(false);
+        skillBox.setDisable(false);
+        timeBox.setDisable(false);
         SaveRecipe.setText("Save Recipe");
         Next.setDisable(true);
         wait.setText("Please keep in mind avarege response time 30sec!"); // Clear the wait label
@@ -302,6 +384,8 @@ public class HelloController {
 
                 // Set the output to the label
                 ingredientinput.setDisable(true); // Disabling both button and text so user doesn't use them
+                skillBox.setDisable(true);
+                timeBox.setDisable(true);
                 Buttonforrecipes.setDisable(true);
                 ShowSavedRecipes.setDisable(true);
                 wait.setText("");
