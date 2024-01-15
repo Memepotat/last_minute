@@ -64,6 +64,8 @@ public class Filter {
         ArrayList<Integer> recipeTime = new ArrayList<>();
 
         for (int i = 1; i <= fc; i++) {
+            boolean hour;
+            hour = false;
             String Tpath = path + "/recipe_" + i + "/TimeEstimate.txt";
 
             StringBuilder result = new StringBuilder();
@@ -71,8 +73,13 @@ public class Filter {
                 String line;
                 while ((line = reader.readLine()) != null) {
                     // * */ Use regular expression to match numbers in each line
-                    Pattern pattern = Pattern.compile("\\d+");
-                    Matcher matcher = pattern.matcher(line);
+                    Pattern floatPattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+                    Matcher matcher = floatPattern.matcher(line);
+
+                    if (line.toLowerCase().contains("hour") || line.contains("hours")) { // * Check if the time is
+                        hour = true; // * */ in minutes or hours */
+                        System.out.println("Hour is contained");
+                    }
 
                     // * */ Append matched numbers to the result string
                     while (matcher.find()) {
@@ -80,7 +87,12 @@ public class Filter {
                     }
                 }
             }
-            if (time >= Integer.parseInt(result.toString().trim())) {
+            float Rtime = Float.parseFloat(result.toString().trim()); // * Save the number */
+            if (hour == true) {
+                Rtime = Rtime * 60;
+            }
+
+            if (time >= Rtime) {
                 recipeTime.add(i);
             }
         }

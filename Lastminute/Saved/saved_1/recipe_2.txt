@@ -1,4 +1,4 @@
-Garlic Bread 
+This is a Demo recipe to Showcase the Save Functionality Garlic Bread 
 Difficulty: Easy 
 Time estimate: 15 minutes 
 Ingredients: 
