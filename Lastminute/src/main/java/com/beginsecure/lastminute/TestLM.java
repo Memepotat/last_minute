@@ -1,6 +1,5 @@
 package com.beginsecure.lastminute;
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -9,7 +8,6 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.logging.Filter;
 
 import static org.junit.Assert.*;
 public class TestLM {
@@ -42,7 +40,7 @@ public class TestLM {
         }
 
         @Test
-        public void testIngredients(){
+        public void testAIngredients(){
             Ingredients ingredients = new Ingredients();
             assertEquals("Provide me with up to five (5) recipes using either all or some of the following ingredients: Banannas . Structure the result as so: Signal the beginning of a recipe by placing === at the first line at the start. Under the first line is the title of the recipe followed by a difficulty level one line below (easy, medium, hard). The third line should be a time estimate for the recipe in minutes. Under that line give me the ingredients needed. Under the ingredients give me the instructions. This is an example of how I want the result to be structured(I will be using /n to signal a linebreak) do not leave gaps between the lines and do not number the recipes, just have their title: === /n. Recipe Title. /n (Difficulty)./n Time estimate: minutes to make the recipe. /n Ingredients: List of all ingredients used. /n Instructions: Instructions for the recipe",ingredients.PormptCreator(Bannana));
         }
@@ -82,39 +80,39 @@ public class TestLM {
             String test = Display.SName(1);
             assertNotNull(test);
             assertFalse(test.isEmpty());
-            assertEquals("ExpectedRecipeName", test.trim());
+            assertEquals("Banana-Chocolate Smoothie", test.trim());
         }
         @Test
         public void testSDifficulty() {
             String test = Display.SDifficulty(1);
             assertNotNull(test);
             assertFalse(test.isEmpty());
-            assertEquals("ExpectedRecipeName", test.trim());
+            assertEquals("Easy", test.trim());
         }
         @Test
         public void testSTime() {
             String test = Display.STime(1);
             assertNotNull(test);
             assertFalse(test.isEmpty());
-            assertEquals("ExpectedRecipeName", test.trim());
+            assertEquals("5 minutes", test.trim());
         }
         @Test
         public void testSIngredients() {
             String test = Display.SIngredients(1);
             assertNotNull(test);
             assertFalse(test.isEmpty());
-            assertEquals("ExpectedRecipeName", test.trim());
+            assertEquals("- 1 ripe banana \n - 1 cup milk \n - 2 tablespoons cocoa powder \n - 1 tablespoon honey \n - Ice cubes (Optional)", test.trim());
         }
         @Test
         public void testSInstructions() {
             String test = Display.SInstructions(1);
             assertNotNull(test);
             assertFalse(test.isEmpty());
-            assertEquals("ExpectedRecipeName", test.trim());
+            assertEquals("1. Peel the banana and break it into chunks. \n 2. Place the banana chunks, milk, cocoa powder, and honey in a blender. \n 3. Blend until smooth and creamy. \n 4. If desired, add a few ice cubes and blend again until well combined. \n 5. Pour into a glass and serve immediatly.", test.trim());
         }
         //test for Filter class
         @Test
-        public void testDifficulty(){
+        public void testFDifficulty(){
             Filter filter = new Filter();
             ArrayList<Integer> test = filter.Difficulty(2);
             assertNotNull(test);
@@ -122,7 +120,7 @@ public class TestLM {
             assertTrue(test.contains(1));
         }
         @Test
-        public void testTime(){
+        public void testFTime(){
             Filter filter = new Filter();
             ArrayList<Integer> test = filter.Time(30);
             assertNotNull(test);
