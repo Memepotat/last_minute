@@ -13,8 +13,8 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 
 public class GPT_API {
-    private static final String API_KEY = "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";
-    private static final String url = "https://api.openai.com/v1/chat/completions";
+    private static final String API_KEY = System.getenv("openai");;
+    private static final String url = System.getenv("openai");
     private static final String MODEL = "gpt-3.5-turbo";
 
     public static void getRecipes(String prompt) throws URISyntaxException {
