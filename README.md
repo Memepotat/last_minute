@@ -1,4 +1,4 @@
-- This is application gets built and compiled by gradle, it does not require gradle to be installed on the users machine.
+- This is  an pplication that gets built and compiled by gradle, it does not require gradle to be installed on the user's machine.
 
 - IN ORDER TO RUN
 Create a user system variable with the name openai and value of your api key
@@ -9,7 +9,7 @@ simply double click the RUN.bat file (Windows only)
 2. Enter your available ingredients (seperated by commas) in the top left text box
 3. Choose your skill level & available time with the two drop down menus
 4. Press the button "Press for last minute recipe"
-5. Use the Previous and forward buttons to cycle through the available recipes
+5. Use the Previous and Forward buttons to cycle through the available recipes
 6. Use the "Save Recipe" Button to save a recipe you like
 7. Clear the results by hitting the "Search Again" button
 8. After clearing the results you can view saved recipes with the "View saved recipes" button
@@ -19,7 +19,7 @@ simply double click the RUN.bat file (Windows only)
 - NAVIGATING THE GIT REPOSITORY
 The repostitory consists of 4 branches
 1. main
-The main Branch contains two folder (Lastminute, BetaTesting) in which all the code in order to run the final application is held 
+The main Branch contains two folder (Lastminute, BetaTesting) in which all the code in order to run the final application is held, 
 as well as code that has either been replaced or been used for testing puposes.
 	The structure of the main branch is as follows:
 	Inside the last_minute folder you will find all the relevant code for the application and gradle. Also located in the last_minute folder is the 
